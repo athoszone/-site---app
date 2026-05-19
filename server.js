@@ -1,4 +1,19 @@
 const express = require('express');
+
 const app = express();
-app.get('/forecast', (req, res) => { res.send('Η πρόγνωσή σου εδώ'); });
-app.listen(3000, () => console.log('API running on port 3000'));
+const PORT = process.env.PORT || 3000;
+
+app.get('/', (req, res) => {
+  res.send('Athos Forecast API is running');
+});
+
+app.get('/forecast', (req, res) => {
+  res.json({
+    title: 'Πρόγνωση καιρού Αγίου Όρους',
+    text: 'Η πρόγνωση θα ενημερώνεται από εδώ.'
+  });
+});
+
+app.listen(PORT, () => {
+  console.log(`API running on port ${PORT}`);
+});
